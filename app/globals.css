@@ -1,0 +1,68 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+/*
+ * Palette du site : bleu eau / blanc, accents turquoise.
+ * Les couleurs sont utilisables en classes Tailwind : bg-eau-600, text-turquoise-500, etc.
+ */
+@theme {
+  --color-eau-50: #eff8ff;
+  --color-eau-100: #dbeefe;
+  --color-eau-200: #bfe2fe;
+  --color-eau-300: #93d0fd;
+  --color-eau-400: #60b5fa;
+  --color-eau-500: #3b96f6;
+  --color-eau-600: #2578eb;
+  --color-eau-700: #1d62d8;
+  --color-eau-800: #1e50af;
+  --color-eau-900: #1e458a;
+  --color-eau-950: #172c54;
+
+  --color-turquoise-50: #effefb;
+  --color-turquoise-100: #c8fff4;
+  --color-turquoise-200: #91feea;
+  --color-turquoise-300: #53f5dd;
+  --color-turquoise-400: #1fe0ca;
+  --color-turquoise-500: #06c4b1;
+  --color-turquoise-600: #019e91;
+  --color-turquoise-700: #067d75;
+  --color-turquoise-800: #0a635e;
+  --color-turquoise-900: #0d524e;
+
+  /* Polices système : aucun chargement externe, affichage instantané */
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-white text-slate-800 antialiased;
+}
+
+/* Focus visible et bien contrasté pour la navigation au clavier */
+:focus-visible {
+  outline: 3px solid var(--color-turquoise-500);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* Lien d'évitement (accessibilité) */
+.skip-link {
+  @apply sr-only;
+}
+.skip-link:focus {
+  @apply not-sr-only fixed top-3 left-3 z-[100] rounded-lg bg-eau-900 px-4 py-2 text-white;
+}
+
+/* Contenus longs (articles, guides) */
+.prose-piscine {
+  @apply prose prose-slate max-w-none prose-headings:text-eau-950 prose-a:text-eau-700 prose-a:underline-offset-2 prose-strong:text-slate-900 prose-li:marker:text-turquoise-600;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}

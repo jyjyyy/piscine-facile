@@ -1,0 +1,1106 @@
+{
+  "problems": [
+    {
+      "slug": "eau-verte",
+      "title": "Eau verte",
+      "question": "Pourquoi ma piscine est-elle verte ?",
+      "shortDescription": "Des algues se développent : l'eau n'est plus assez désinfectée.",
+      "icon": "leaf",
+      "metaDescription": "Piscine verte : trouvez la cause en quelques questions (chlore, pH, stabilisant) et suivez les étapes pour retrouver une eau claire en quelques jours.",
+      "relatedArticle": "piscine-verte-rattraper",
+      "proNeed": "entretien",
+      "startNode": "fond",
+      "nodes": {
+        "fond": {
+          "type": "question",
+          "text": "Voyez-vous encore le fond de la piscine ?",
+          "help": "Regardez la partie la plus profonde, en plein jour.",
+          "options": [
+            { "label": "Oui, l'eau est vert clair", "next": "chlore" },
+            { "label": "Non, l'eau est vert foncé ou opaque", "next": "r-verte-foncee" }
+          ]
+        },
+        "chlore": {
+          "type": "question",
+          "text": "Le chlore libre est-il inférieur à 1 mg/L ?",
+          "help": "Mesurez avec une trousse d'analyse ou des bandelettes.",
+          "options": [
+            { "label": "Oui", "next": "r-manque-chlore" },
+            { "label": "Non, il est correct", "next": "ph" },
+            { "label": "Je ne peux pas mesurer", "next": "r-manque-chlore" }
+          ]
+        },
+        "ph": {
+          "type": "question",
+          "text": "Le pH est-il supérieur à 7,6 ?",
+          "options": [
+            { "label": "Oui", "next": "r-ph-haut" },
+            { "label": "Non", "next": "r-chlore-bloque" }
+          ]
+        },
+        "r-verte-foncee": {
+          "type": "result",
+          "title": "Prolifération d'algues avancée",
+          "severity": "diy",
+          "causes": [
+            "Désinfection absente ou très insuffisante depuis plusieurs jours",
+            "Filtration trop courte ou arrêtée par forte chaleur",
+            "Remise en route tardive après l'hiver"
+          ],
+          "steps": [
+            "Retirez les débris (feuilles, insectes) à l'épuisette et videz les paniers de skimmers et de pompe.",
+            "Lavez le filtre (contre-courant puis rinçage pour un filtre à sable, nettoyage au jet pour une cartouche).",
+            "Ajustez le pH entre 7,0 et 7,2 : le chlore choc sera beaucoup plus efficace.",
+            "Le soir, faites un traitement choc : suivez la dose « eau verte » indiquée sur l'étiquette du chlore choc (souvent 15 à 20 g/m³). Si votre stabilisant dépasse 50 mg/L, préférez un chlore non stabilisé (liquide ou hypochlorite de calcium).",
+            "Brossez énergiquement parois et fond pour décoller les algues.",
+            "Filtrez 24 h/24 pendant 48 à 72 h et lavez le filtre dès que la pression monte.",
+            "Quand l'eau est devenue grise ou bleu trouble, ajoutez un floculant, arrêtez la filtration quelques heures puis aspirez le dépôt en position « égout ».",
+            "Refaites une analyse complète avant de vous baigner."
+          ],
+          "products": ["chlore-choc", "chlore-liquide", "ph-minus", "floculant", "epuisette", "epi-chimie"],
+          "showPro": true
+        },
+        "r-manque-chlore": {
+          "type": "result",
+          "title": "Manque de désinfectant",
+          "severity": "diy",
+          "causes": [
+            "Galets de chlore lent épuisés ou diffuseur mal réglé",
+            "Fort ensoleillement ou pluie qui ont consommé le chlore",
+            "Forte fréquentation",
+            "Électrolyseur en production insuffisante"
+          ],
+          "steps": [
+            "Nettoyez le filtre et les paniers de skimmers.",
+            "Ajustez le pH entre 7,2 et 7,4 (utilisez notre outil d'analyse pour la dose).",
+            "Faites un traitement choc au chlore le soir, filtration en marche.",
+            "Brossez les parois et filtrez 24 h/24 pendant 24 à 48 h.",
+            "Remettez des galets de chlore lent (ou augmentez la production de l'électrolyseur) pour maintenir 1 à 3 mg/L.",
+            "Ajoutez un anti-algues préventif une fois l'eau redevenue claire."
+          ],
+          "products": ["chlore-choc", "chlore-lent", "anti-algues", "trousse-analyse"],
+          "showPro": false
+        },
+        "r-ph-haut": {
+          "type": "result",
+          "title": "pH trop élevé : le chlore ne fonctionne plus",
+          "severity": "diy",
+          "causes": [
+            "À pH 7,8, le chlore est environ deux fois moins actif qu'à pH 7,2",
+            "TAC trop élevé qui fait remonter le pH",
+            "Électrolyseur au sel (le pH monte naturellement)"
+          ],
+          "steps": [
+            "Vérifiez le TAC et corrigez-le en premier s'il est hors de 80 à 150 mg/L.",
+            "Baissez le pH vers 7,2 avec du pH moins, en plusieurs fois.",
+            "Attendez 4 à 6 heures puis faites un traitement choc au chlore le soir.",
+            "Filtrez 24 h/24 pendant 48 h et brossez les parois.",
+            "Contrôlez le pH deux fois par semaine ensuite."
+          ],
+          "products": ["ph-minus", "chlore-choc", "trousse-analyse"],
+          "showPro": false
+        },
+        "r-chlore-bloque": {
+          "type": "result",
+          "title": "Algues résistantes ou chlore « bloqué »",
+          "severity": "diy",
+          "causes": [
+            "Stabilisant (acide cyanurique) trop élevé qui réduit l'efficacité du chlore",
+            "Filtration insuffisante ou filtre colmaté",
+            "Zones mal brassées (escaliers, angles) où les algues s'installent",
+            "Phosphates apportés par la pluie, les engrais ou les feuilles"
+          ],
+          "steps": [
+            "Mesurez le stabilisant : au-delà de 75 mg/L, renouvelez une partie de l'eau.",
+            "Nettoyez ou changez le média filtrant si la pression reste haute après lavage.",
+            "Orientez les buses de refoulement pour faire tourner l'eau et brossez les zones mortes chaque jour.",
+            "Faites un traitement choc avec un chlore non stabilisé.",
+            "Utilisez un anti-algues curatif en suivant l'étiquette.",
+            "Si l'eau reste verte après une semaine, faites appel à un professionnel."
+          ],
+          "products": ["chlore-liquide", "anti-algues", "nettoyant-filtre"],
+          "showPro": true
+        }
+      },
+      "faq": [
+        {
+          "q": "Combien de temps faut-il pour rattraper une piscine verte ?",
+          "a": "Comptez en général 2 à 5 jours avec une filtration continue, un pH corrigé et un traitement choc. Une eau très verte peut demander plusieurs chocs successifs."
+        },
+        {
+          "q": "Peut-on se baigner dans une piscine verte ?",
+          "a": "Non. Une eau verte n'est plus désinfectée et peut contenir des bactéries. Attendez que l'eau soit claire et que le chlore soit revenu entre 1 et 3 mg/L."
+        },
+        {
+          "q": "Faut-il vider une piscine verte ?",
+          "a": "Presque jamais. Vider une piscine peut l'abîmer (liner, coque qui remonte). Un traitement choc bien mené suffit dans la grande majorité des cas."
+        }
+      ]
+    },
+    {
+      "slug": "eau-trouble",
+      "title": "Eau trouble ou laiteuse",
+      "question": "Pourquoi l'eau de ma piscine est-elle trouble ?",
+      "shortDescription": "Particules en suspension, calcaire ou manque de désinfection.",
+      "icon": "cloud",
+      "metaDescription": "Eau de piscine trouble ou laiteuse : identifiez la cause (chlore, pH, calcaire, filtre) et appliquez la bonne solution étape par étape.",
+      "relatedArticle": "eau-piscine-trouble",
+      "proNeed": "entretien",
+      "startNode": "chlore",
+      "nodes": {
+        "chlore": {
+          "type": "question",
+          "text": "Le chlore libre est-il inférieur à 1 mg/L ?",
+          "options": [
+            { "label": "Oui", "next": "r-desinfection" },
+            { "label": "Non", "next": "phtac" }
+          ]
+        },
+        "phtac": {
+          "type": "question",
+          "text": "Le pH dépasse-t-il 7,6 ou le TAC dépasse-t-il 150 mg/L ?",
+          "help": "Une eau blanche et laiteuse est souvent le signe d'un calcaire qui précipite.",
+          "options": [
+            { "label": "Oui", "next": "r-calcaire" },
+            { "label": "Non", "next": "filtre" }
+          ]
+        },
+        "filtre": {
+          "type": "question",
+          "text": "Le filtre n'a-t-il pas été lavé depuis longtemps, ou sa pression est-elle anormale ?",
+          "options": [
+            { "label": "Oui", "next": "r-filtre" },
+            { "label": "Non, le filtre est entretenu", "next": "r-particules" }
+          ]
+        },
+        "r-desinfection": {
+          "type": "result",
+          "title": "Désinfection insuffisante (début d'algues ou de bactéries)",
+          "severity": "diy",
+          "causes": ["Chlore consommé par la chaleur, la pluie ou les baigneurs", "Galets épuisés"],
+          "steps": [
+            "Ajustez le pH entre 7,2 et 7,4.",
+            "Faites un traitement choc au chlore le soir.",
+            "Filtrez 24 h/24 pendant 24 à 48 h.",
+            "Lavez le filtre quand la pression monte.",
+            "Maintenez ensuite le chlore entre 1 et 3 mg/L."
+          ],
+          "products": ["chlore-choc", "ph-minus", "trousse-analyse"],
+          "showPro": false
+        },
+        "r-calcaire": {
+          "type": "result",
+          "title": "Précipitation de calcaire",
+          "severity": "diy",
+          "causes": ["pH trop élevé", "TAC ou TH (dureté) trop élevés", "Eau de remplissage calcaire"],
+          "steps": [
+            "Corrigez d'abord le TAC s'il dépasse 150 mg/L (méthode acide + aération).",
+            "Ramenez le pH vers 7,2.",
+            "Ajoutez un séquestrant calcaire pour garder le calcaire en solution.",
+            "Filtrez 24 h/24 pendant 48 h et lavez le filtre.",
+            "Utilisez un clarifiant si un voile persiste."
+          ],
+          "products": ["ph-minus", "anti-calcaire", "clarifiant"],
+          "showPro": false
+        },
+        "r-filtre": {
+          "type": "result",
+          "title": "Filtration inefficace",
+          "severity": "diy",
+          "causes": [
+            "Filtre encrassé (sable colmaté, cartouche sale)",
+            "Durée de filtration trop courte",
+            "Sable usé (à changer tous les 5 à 7 ans environ)"
+          ],
+          "steps": [
+            "Faites un lavage à contre-courant puis un rinçage (filtre à sable) ou nettoyez la cartouche au jet.",
+            "Augmentez la durée de filtration (règle : température de l'eau / 2).",
+            "Faites un traitement dégraissant du filtre une à deux fois par saison.",
+            "Si le sable a plus de 5 à 7 ans, remplacez-le (le verre filtrant est une bonne alternative)."
+          ],
+          "products": ["nettoyant-filtre", "verre-filtrant", "manometre"],
+          "showPro": true
+        },
+        "r-particules": {
+          "type": "result",
+          "title": "Particules trop fines pour le filtre",
+          "severity": "diy",
+          "causes": ["Pollens, poussières, crème solaire", "Particules plus fines que ce que retient le sable"],
+          "steps": [
+            "Ajoutez un clarifiant (ou une cartouche de floculant dans le skimmer pour un filtre à sable).",
+            "Filtrez 24 h/24 pendant 24 à 48 h.",
+            "Lavez le filtre après le traitement.",
+            "Si le dépôt tombe au fond, aspirez-le en position « égout »."
+          ],
+          "products": ["clarifiant", "floculant"],
+          "showPro": false
+        }
+      },
+      "faq": [
+        {
+          "q": "Pourquoi mon eau est-elle trouble alors que le chlore est bon ?",
+          "a": "Le plus souvent, c'est un pH ou un TAC trop élevé qui fait précipiter le calcaire, ou un filtre encrassé. Vérifiez ces deux points en priorité."
+        },
+        {
+          "q": "Clarifiant ou floculant : que choisir ?",
+          "a": "Le clarifiant agit en douceur pendant la filtration. Le floculant est plus puissant : il fait tomber les particules au fond, qu'il faut ensuite aspirer à l'égout."
+        },
+        {
+          "q": "Peut-on se baigner dans une eau trouble ?",
+          "a": "C'est déconseillé : on ne voit plus le fond, ce qui est dangereux, et la désinfection peut être insuffisante."
+        }
+      ]
+    },
+    {
+      "slug": "eau-qui-mousse",
+      "title": "Eau qui mousse",
+      "question": "Pourquoi l'eau de ma piscine mousse-t-elle ?",
+      "shortDescription": "Anti-algues surdosé, matières organiques ou eau trop douce.",
+      "icon": "sparkles",
+      "metaDescription": "Mousse sur l'eau de la piscine : anti-algues, crème solaire ou eau trop douce. Identifiez la cause et supprimez la mousse durablement.",
+      "relatedArticle": "eau-piscine-trouble",
+      "proNeed": "entretien",
+      "startNode": "antialgues",
+      "nodes": {
+        "antialgues": {
+          "type": "question",
+          "text": "Avez-vous ajouté un anti-algues récemment ?",
+          "options": [
+            { "label": "Oui", "next": "r-antialgues" },
+            { "label": "Non", "next": "organique" }
+          ]
+        },
+        "organique": {
+          "type": "question",
+          "text": "La piscine a-t-elle été très fréquentée récemment (crème solaire, cosmétiques) ?",
+          "options": [
+            { "label": "Oui", "next": "r-organique" },
+            { "label": "Non", "next": "r-eau-douce" }
+          ]
+        },
+        "r-antialgues": {
+          "type": "result",
+          "title": "Anti-algues surdosé ou inadapté",
+          "severity": "diy",
+          "causes": ["Certains anti-algues (ammoniums quaternaires) moussent quand ils sont surdosés"],
+          "steps": [
+            "Arrêtez les apports d'anti-algues.",
+            "Utilisez un anti-mousse pour un résultat immédiat.",
+            "Faites un apport d'eau neuve pour diluer (10 à 20 % du volume si la mousse persiste).",
+            "À l'avenir, choisissez un anti-algues « non moussant » et respectez la dose."
+          ],
+          "products": ["anti-mousse", "anti-algues"],
+          "showPro": false
+        },
+        "r-organique": {
+          "type": "result",
+          "title": "Matières organiques en excès",
+          "severity": "diy",
+          "causes": ["Crèmes solaires, sueur, cosmétiques", "Chlore insuffisant pour les détruire"],
+          "steps": [
+            "Vérifiez le pH puis faites un traitement choc au chlore le soir.",
+            "Filtrez 24 h/24 pendant 24 h et nettoyez la ligne d'eau.",
+            "Utilisez un anti-mousse si besoin.",
+            "Demandez aux baigneurs de prendre une douche avant la baignade."
+          ],
+          "products": ["chlore-choc", "anti-mousse", "nettoyant-ligne-eau"],
+          "showPro": false
+        },
+        "r-eau-douce": {
+          "type": "result",
+          "title": "Eau trop douce",
+          "severity": "diy",
+          "causes": ["Une eau très peu calcaire (TH bas) mousse plus facilement"],
+          "steps": [
+            "Mesurez le TH : l'idéal se situe entre 150 et 250 mg/L (15 à 25 °f).",
+            "S'il est bas, augmentez-le avec un « dureté plus » (chlorure de calcium).",
+            "Utilisez un anti-mousse en attendant."
+          ],
+          "products": ["calcium-plus", "anti-mousse", "trousse-analyse"],
+          "showPro": false
+        }
+      },
+      "faq": [
+        {
+          "q": "La mousse est-elle dangereuse ?",
+          "a": "Non, elle est surtout gênante. Mais elle signale un déséquilibre (produit surdosé ou pollution organique) qu'il faut corriger."
+        },
+        {
+          "q": "Peut-on utiliser du liquide vaisselle ou un autre produit ménager ?",
+          "a": "Jamais. Les produits ménagers ne sont pas conçus pour les piscines et aggravent la mousse. Utilisez uniquement des produits dédiés."
+        }
+      ]
+    },
+    {
+      "slug": "depots-tartre",
+      "title": "Dépôts et tartre",
+      "question": "Comment enlever les dépôts sur les parois de ma piscine ?",
+      "shortDescription": "Traces blanches, brunes ou noires sur les parois et la ligne d'eau.",
+      "icon": "layers",
+      "metaDescription": "Tartre, taches brunes, dépôt sur la ligne d'eau : identifiez le type de dépôt dans votre piscine et apprenez à l'éliminer sans abîmer le revêtement.",
+      "relatedArticle": "tac-piscine-explique",
+      "proNeed": "entretien",
+      "startNode": "aspect",
+      "nodes": {
+        "aspect": {
+          "type": "question",
+          "text": "À quoi ressemblent les dépôts ?",
+          "options": [
+            { "label": "Blancs et rugueux", "next": "ph" },
+            { "label": "Bruns, rouille ou violets", "next": "r-metaux" },
+            { "label": "Taches noires ou jaunes qui résistent au brossage", "next": "r-algues-tenaces" },
+            { "label": "Trace grasse sur la ligne d'eau", "next": "r-ligne-eau" }
+          ]
+        },
+        "ph": {
+          "type": "question",
+          "text": "Votre pH dépasse-t-il souvent 7,6 ?",
+          "options": [
+            { "label": "Oui", "next": "r-tartre-ph" },
+            { "label": "Non", "next": "r-tartre-th" }
+          ]
+        },
+        "r-tartre-ph": {
+          "type": "result",
+          "title": "Tartre lié à un pH trop haut",
+          "severity": "diy",
+          "causes": ["Le calcaire se dépose quand le pH monte", "TAC élevé qui fait remonter le pH"],
+          "steps": [
+            "Corrigez le TAC s'il dépasse 150 mg/L, puis maintenez le pH entre 7,2 et 7,3.",
+            "Brossez les dépôts récents avec une brosse adaptée à votre revêtement (jamais de brosse métallique sur un liner).",
+            "Utilisez un nettoyant ligne d'eau pour les dépôts localisés.",
+            "Ajoutez un séquestrant calcaire en entretien."
+          ],
+          "products": ["ph-minus", "anti-calcaire", "nettoyant-ligne-eau"],
+          "showPro": false
+        },
+        "r-tartre-th": {
+          "type": "result",
+          "title": "Eau naturellement dure",
+          "severity": "diy",
+          "causes": ["Eau de remplissage très calcaire (TH élevé)", "Évaporation qui concentre le calcaire"],
+          "steps": [
+            "Mesurez le TH ; au-delà de 250 mg/L (25 °f), le risque de tartre est élevé.",
+            "Maintenez le pH au bas de la fourchette (7,2).",
+            "Utilisez un séquestrant calcaire toute la saison.",
+            "Pour les dépôts importants sur carrelage ou coque, un détartrage professionnel peut être nécessaire."
+          ],
+          "products": ["anti-calcaire", "trousse-analyse"],
+          "showPro": true
+        },
+        "r-metaux": {
+          "type": "result",
+          "title": "Présence de métaux (fer, cuivre, manganèse)",
+          "severity": "diy",
+          "causes": ["Eau de forage ou de puits", "Corrosion d'un élément métallique (échangeur, échelle)", "pH trop bas qui attaque les métaux"],
+          "steps": [
+            "Ne faites pas de chlore choc avant d'avoir traité les métaux : cela peut aggraver les taches.",
+            "Ajoutez un séquestrant métaux et filtrez 24 h/24 pendant 48 h.",
+            "Vérifiez que le pH n'est pas trop bas (corrosion).",
+            "Si les taches persistent, un professionnel peut réaliser un traitement spécifique."
+          ],
+          "products": ["sequestrant-metaux", "trousse-analyse"],
+          "showPro": true
+        },
+        "r-algues-tenaces": {
+          "type": "result",
+          "title": "Algues noires ou moutarde",
+          "severity": "diy",
+          "causes": ["Algues résistantes incrustées dans les joints ou le revêtement", "Zones mal brassées"],
+          "steps": [
+            "Brossez énergiquement les taches chaque jour pour casser leur couche protectrice.",
+            "Ajustez le pH vers 7,2 puis faites un traitement choc.",
+            "Utilisez un anti-algues curatif spécifique en suivant l'étiquette.",
+            "Nettoyez aussi les accessoires (jouets, échelle, robot) qui peuvent réintroduire les algues."
+          ],
+          "products": ["anti-algues", "chlore-choc", "epuisette"],
+          "showPro": true
+        },
+        "r-ligne-eau": {
+          "type": "result",
+          "title": "Dépôt gras sur la ligne d'eau",
+          "severity": "diy",
+          "causes": ["Crèmes solaires, pollens et calcaire accumulés à la surface"],
+          "steps": [
+            "Nettoyez avec une éponge et un nettoyant ligne d'eau adapté à votre revêtement.",
+            "Maintenez le niveau d'eau au milieu des skimmers pour une bonne aspiration de surface.",
+            "Videz les paniers de skimmers régulièrement."
+          ],
+          "products": ["nettoyant-ligne-eau"],
+          "showPro": false
+        }
+      },
+      "faq": [
+        {
+          "q": "Peut-on utiliser du vinaigre pour enlever le tartre ?",
+          "a": "Évitez les produits ménagers dans la piscine. Un nettoyant ligne d'eau dédié est adapté aux revêtements et à la chimie de l'eau."
+        },
+        {
+          "q": "Comment éviter le tartre ?",
+          "a": "Gardez le pH entre 7,2 et 7,4, le TAC entre 80 et 150 mg/L, et utilisez un séquestrant calcaire si votre eau est dure."
+        }
+      ]
+    },
+    {
+      "slug": "odeur-chlore-yeux",
+      "title": "Odeur de chlore, yeux qui piquent",
+      "question": "Pourquoi ma piscine sent-elle fort le chlore ?",
+      "shortDescription": "Souvent un manque de chlore actif (chloramines), pas un excès.",
+      "icon": "eye",
+      "metaDescription": "Forte odeur de chlore et yeux qui piquent : c'est souvent un manque de chlore libre (chloramines). Découvrez la cause et la solution.",
+      "relatedArticle": "baisser-monter-ph-piscine",
+      "proNeed": "entretien",
+      "startNode": "chlore",
+      "nodes": {
+        "chlore": {
+          "type": "question",
+          "text": "Le chlore libre mesuré dépasse-t-il 3 mg/L ?",
+          "options": [
+            { "label": "Oui", "next": "r-surdosage" },
+            { "label": "Non", "next": "ph" }
+          ]
+        },
+        "ph": {
+          "type": "question",
+          "text": "Le pH est-il en dehors de 7,2 à 7,4 ?",
+          "options": [
+            { "label": "Oui", "next": "r-ph" },
+            { "label": "Non", "next": "r-chloramines" }
+          ]
+        },
+        "r-surdosage": {
+          "type": "result",
+          "title": "Chlore surdosé",
+          "severity": "diy",
+          "causes": ["Trop de galets ou traitement choc récent", "Production de l'électrolyseur trop élevée"],
+          "steps": [
+            "Évitez la baignade tant que le chlore dépasse 5 mg/L.",
+            "Retirez les galets en trop et réduisez la production de l'électrolyseur.",
+            "Laissez la filtration tourner, bâche ouverte : le soleil fait baisser le chlore.",
+            "Recontrôlez le lendemain."
+          ],
+          "products": ["trousse-analyse"],
+          "showPro": false
+        },
+        "r-ph": {
+          "type": "result",
+          "title": "pH déséquilibré",
+          "severity": "diy",
+          "causes": ["Un pH trop haut ou trop bas irrite les yeux et la peau"],
+          "steps": [
+            "Corrigez le TAC si nécessaire, puis ramenez le pH entre 7,2 et 7,4.",
+            "Utilisez notre outil d'analyse pour connaître la dose exacte.",
+            "Recontrôlez 4 à 6 heures après."
+          ],
+          "products": ["ph-minus", "ph-plus", "trousse-analyse"],
+          "showPro": false
+        },
+        "r-chloramines": {
+          "type": "result",
+          "title": "Chloramines (chlore combiné)",
+          "severity": "diy",
+          "causes": [
+            "Le chlore s'est combiné à la sueur et à l'urine des baigneurs : il ne désinfecte plus et sent fort",
+            "Chlore libre insuffisant par rapport à la fréquentation"
+          ],
+          "steps": [
+            "Faites un traitement choc le soir pour détruire les chloramines (l'odeur disparaît quand le chlore est suffisant).",
+            "Filtrez 24 h/24 pendant 24 h, bâche ouverte.",
+            "Faites un apport d'eau neuve si la piscine est très fréquentée.",
+            "Demandez une douche avant la baignade."
+          ],
+          "products": ["chlore-choc", "trousse-analyse"],
+          "showPro": false
+        }
+      },
+      "faq": [
+        {
+          "q": "Une forte odeur de chlore veut-elle dire qu'il y a trop de chlore ?",
+          "a": "Rarement. L'odeur vient surtout des chloramines, qui se forment quand il n'y a pas assez de chlore libre. La solution est souvent… un traitement choc."
+        },
+        {
+          "q": "Comment mesurer le chlore combiné ?",
+          "a": "Il faut une trousse qui mesure le chlore libre ET le chlore total : chlore combiné = chlore total − chlore libre. Au-delà de 0,6 mg/L, faites un traitement choc."
+        }
+      ]
+    },
+    {
+      "slug": "pompe-ne-demarre-pas",
+      "title": "La pompe ne démarre pas",
+      "question": "Pourquoi ma pompe de piscine ne démarre-t-elle pas ?",
+      "shortDescription": "Programmation, protection électrique ou moteur bloqué.",
+      "icon": "power",
+      "metaDescription": "Pompe de piscine qui ne démarre pas : vérifications sans risque (programmation, tableau électrique) et quand appeler un électricien ou un pisciniste.",
+      "relatedArticle": "pompe-piscine-fait-disjoncter",
+      "proNeed": "electricite",
+      "startNode": "tableau",
+      "nodes": {
+        "tableau": {
+          "type": "question",
+          "text": "Dans le tableau électrique de la maison, la protection de la piscine (disjoncteur ou différentiel) est-elle déclenchée (en position basse) ?",
+          "help": "Regardez simplement la position des manettes, sans démonter aucun capot.",
+          "options": [
+            { "label": "Oui, elle est déclenchée", "next": "rearme" },
+            { "label": "Non, tout est enclenché", "next": "horloge" }
+          ]
+        },
+        "rearme": {
+          "type": "question",
+          "text": "Après l'avoir réarmée UNE seule fois, se déclenche-t-elle de nouveau ?",
+          "help": "Si elle refuse de se réarmer ou saute immédiatement, n'insistez pas.",
+          "options": [
+            { "label": "Oui, elle saute à nouveau", "next": "r-electricien-defaut" },
+            { "label": "Non, la pompe redémarre", "next": "r-surveiller" }
+          ]
+        },
+        "horloge": {
+          "type": "question",
+          "text": "En passant l'horloge du coffret de filtration en position « marche forcée » (commande en façade, sans ouvrir le coffret), la pompe démarre-t-elle ?",
+          "options": [
+            { "label": "Oui, elle démarre", "next": "r-horloge" },
+            { "label": "Non, rien ne se passe", "next": "bruit" },
+            { "label": "Je ne trouve pas cette commande", "next": "r-electricien-alim" }
+          ]
+        },
+        "bruit": {
+          "type": "question",
+          "text": "Entendez-vous un bourdonnement au niveau du moteur, sans que la pompe tourne ?",
+          "options": [
+            { "label": "Oui, elle bourdonne", "next": "r-moteur-bloque" },
+            { "label": "Non, aucun bruit", "next": "r-electricien-alim" }
+          ]
+        },
+        "r-surveiller": {
+          "type": "result",
+          "title": "Déclenchement ponctuel",
+          "severity": "diy",
+          "causes": ["Orage ou microcoupure", "Surcharge passagère"],
+          "steps": [
+            "Surveillez la pompe les jours suivants.",
+            "Notez les circonstances si cela se reproduit (pluie, heure, démarrage de la pompe…).",
+            "Si le déclenchement se reproduit, ne réarmez pas à répétition : faites intervenir un électricien."
+          ],
+          "products": [],
+          "showPro": true
+        },
+        "r-horloge": {
+          "type": "result",
+          "title": "Problème de programmation",
+          "severity": "diy",
+          "causes": ["Plages horaires mal réglées", "Horloge déréglée après une coupure de courant", "Horloge défectueuse"],
+          "steps": [
+            "Remettez l'horloge à l'heure et vérifiez les plages de filtration (ergots ou programme).",
+            "Remettez l'horloge en position « automatique » une fois le réglage fait.",
+            "Si l'horloge ne tient plus l'heure ou ne commande plus la pompe, son remplacement doit être fait par un électricien (intervention à l'intérieur du coffret)."
+          ],
+          "products": [],
+          "showPro": true
+        },
+        "r-moteur-bloque": {
+          "type": "result",
+          "title": "Moteur bloqué ou condensateur défectueux",
+          "severity": "pro",
+          "causes": ["Condensateur de démarrage hors service", "Roulements grippés", "Turbine bloquée par un débris"],
+          "steps": [
+            "Coupez immédiatement la pompe (un moteur qui bourdonne chauffe et peut griller).",
+            "Vérifiez que les vannes sont ouvertes et que le panier du préfiltre n'est pas bouché (pompe à l'arrêt).",
+            "Ne démontez pas le moteur ni le capot électrique : le diagnostic du condensateur et du moteur doit être fait par un professionnel."
+          ],
+          "products": [],
+          "showPro": true
+        },
+        "r-electricien-alim": {
+          "type": "result",
+          "title": "Défaut d'alimentation électrique : électricien requis",
+          "severity": "electricien",
+          "causes": ["Protection moteur (relais thermique) déclenchée dans le coffret", "Contacteur ou horloge défectueux", "Câble endommagé"],
+          "steps": [
+            "N'ouvrez pas le coffret électrique de filtration.",
+            "Coupez l'alimentation de la piscine au tableau électrique de la maison.",
+            "Faites appel à un électricien qualifié pour le diagnostic.",
+            "En attendant, maintenez un taux de chlore suffisant et brossez les parois."
+          ],
+          "products": [],
+          "showPro": true
+        },
+        "r-electricien-defaut": {
+          "type": "result",
+          "title": "Défaut électrique : électricien requis",
+          "severity": "electricien",
+          "causes": ["Fuite de courant (humidité, câble ou moteur abîmé)", "Court-circuit", "Moteur en fin de vie"],
+          "steps": [
+            "Ne réarmez pas la protection à répétition : c'est elle qui vous protège.",
+            "Laissez la piscine hors tension et évitez la baignade si un projecteur est raccordé au même circuit.",
+            "N'ouvrez ni le coffret ni le moteur.",
+            "Faites appel à un électricien qualifié."
+          ],
+          "products": [],
+          "showPro": true
+        }
+      },
+      "faq": [
+        {
+          "q": "Puis-je réarmer le disjoncteur de ma pompe ?",
+          "a": "Une fois, oui. S'il saute à nouveau, il signale un défaut réel : ne réarmez plus et faites intervenir un électricien."
+        },
+        {
+          "q": "Combien de temps une piscine peut-elle rester sans filtration ?",
+          "a": "En été, l'eau peut verdir en 24 à 48 heures. Maintenez un taux de chlore correct et brossez les parois en attendant la réparation."
+        }
+      ]
+    },
+    {
+      "slug": "disjoncteur-differentiel-saute",
+      "title": "Le disjoncteur ou le différentiel saute",
+      "question": "Pourquoi le disjoncteur de ma piscine saute-t-il ?",
+      "shortDescription": "Défaut d'isolement ou surcharge : à confier à un électricien.",
+      "icon": "zap",
+      "metaDescription": "Le différentiel ou le disjoncteur de la piscine saute : les causes possibles (humidité, moteur, projecteur) et pourquoi il faut appeler un électricien.",
+      "relatedArticle": "pompe-piscine-fait-disjoncter",
+      "proNeed": "electricite",
+      "startNode": "quoi",
+      "nodes": {
+        "quoi": {
+          "type": "question",
+          "text": "Qu'est-ce qui se déclenche ?",
+          "help": "Le différentiel porte la mention « 30 mA » et souvent un bouton « test ».",
+          "options": [
+            { "label": "Le différentiel 30 mA", "next": "humidite" },
+            { "label": "Le disjoncteur de la pompe", "next": "r-surcharge" },
+            { "label": "Je ne sais pas", "next": "r-electricien" }
+          ]
+        },
+        "humidite": {
+          "type": "question",
+          "text": "Le déclenchement se produit-il surtout par temps de pluie ou d'humidité ?",
+          "options": [
+            { "label": "Oui", "next": "r-humidite" },
+            { "label": "Non, à tout moment", "next": "r-fuite-courant" }
+          ]
+        },
+        "r-humidite": {
+          "type": "result",
+          "title": "Infiltration d'humidité",
+          "severity": "electricien",
+          "causes": ["Local technique humide ou inondé", "Boîte de connexion ou presse-étoupe non étanche", "Câble de projecteur abîmé"],
+          "steps": [
+            "Coupez l'alimentation de la piscine au tableau de la maison.",
+            "Évitez la baignade tant que le défaut n'est pas trouvé si un projecteur est raccordé.",
+            "Vous pouvez ventiler ou assécher le local technique, sans toucher aux équipements électriques.",
+            "Faites intervenir un électricien qualifié pour une mesure d'isolement."
+          ],
+          "products": [],
+          "showPro": true
+        },
+        "r-fuite-courant": {
+          "type": "result",
+          "title": "Défaut d'isolement permanent",
+          "severity": "electricien",
+          "causes": ["Moteur de pompe dont le bobinage est abîmé", "Projecteur dont l'étanchéité est défaillante", "Électrolyseur, pompe à chaleur ou autre équipement en défaut"],
+          "steps": [
+            "Ne réarmez pas à répétition : le différentiel 30 mA vous protège de l'électrocution.",
+            "Coupez l'alimentation et interdisez la baignade tant que le défaut n'est pas identifié.",
+            "Faites intervenir un électricien qualifié : il isolera chaque équipement pour trouver celui en défaut."
+          ],
+          "products": [],
+          "showPro": true
+        },
+        "r-surcharge": {
+          "type": "result",
+          "title": "Surcharge ou court-circuit",
+          "severity": "electricien",
+          "causes": ["Moteur qui force (roulements, turbine bloquée)", "Protection mal calibrée", "Court-circuit"],
+          "steps": [
+            "Coupez la pompe et vérifiez seulement que les vannes sont ouvertes et le préfiltre propre (pompe à l'arrêt).",
+            "Ne remplacez pas vous-même la protection par un calibre supérieur : c'est dangereux.",
+            "Faites intervenir un électricien qualifié."
+          ],
+          "products": [],
+          "showPro": true
+        },
+        "r-electricien": {
+          "type": "result",
+          "title": "Diagnostic électrique nécessaire",
+          "severity": "electricien",
+          "causes": ["Défaut d'isolement", "Surcharge", "Équipement en fin de vie"],
+          "steps": [
+            "Coupez l'alimentation de la piscine au tableau électrique.",
+            "Notez quand le déclenchement se produit (pluie, démarrage de la pompe, éclairage allumé…).",
+            "Faites intervenir un électricien qualifié."
+          ],
+          "products": [],
+          "showPro": true
+        }
+      },
+      "faq": [
+        {
+          "q": "Pourquoi un différentiel 30 mA est-il obligatoire pour une piscine ?",
+          "a": "La norme NF C 15-100 impose un différentiel haute sensibilité 30 mA pour protéger les personnes contre l'électrocution, un risque accru à proximité de l'eau."
+        },
+        {
+          "q": "Puis-je remplacer le différentiel par un modèle moins sensible ?",
+          "a": "Non, c'est interdit et dangereux. Un différentiel qui saute signale un défaut réel qu'il faut réparer."
+        }
+      ]
+    },
+    {
+      "slug": "fuite-baisse-niveau",
+      "title": "Fuite ou baisse du niveau d'eau",
+      "question": "Ma piscine perd de l'eau : est-ce une fuite ?",
+      "shortDescription": "Évaporation normale ou vraie fuite : faites le test du seau.",
+      "icon": "droplet",
+      "metaDescription": "Baisse du niveau d'eau de la piscine : évaporation ou fuite ? Faites le test du seau et localisez la fuite (skimmer, pièces à sceller, canalisations, liner).",
+      "relatedArticle": "remise-en-route-piscine-printemps",
+      "proNeed": "fuite",
+      "startNode": "vitesse",
+      "nodes": {
+        "vitesse": {
+          "type": "question",
+          "text": "Le niveau baisse-t-il de plus de 1 cm par jour (hors canicule ou vent fort) ?",
+          "options": [
+            { "label": "Oui", "next": "seau" },
+            { "label": "Non", "next": "r-evaporation" }
+          ]
+        },
+        "seau": {
+          "type": "question",
+          "text": "Test du seau : la baisse est-elle plus forte dans la piscine que dans le seau ?",
+          "help": "Posez un seau rempli d'eau sur la 2e marche, au même niveau que la piscine. Marquez les deux niveaux et comparez après 24 h, filtration en marche.",
+          "options": [
+            { "label": "Oui, la piscine baisse plus", "next": "ou" },
+            { "label": "Non, c'est identique", "next": "r-evaporation" }
+          ]
+        },
+        "ou": {
+          "type": "question",
+          "text": "Que remarquez-vous ?",
+          "options": [
+            { "label": "Le niveau se stabilise juste sous une pièce (skimmer, buse, projecteur)", "next": "r-piece" },
+            { "label": "La perte est plus forte filtration en marche", "next": "r-refoulement" },
+            { "label": "La perte est plus forte filtration arrêtée", "next": "r-aspiration" },
+            { "label": "Le niveau baisse sans jamais se stabiliser", "next": "r-structure" }
+          ]
+        },
+        "r-evaporation": {
+          "type": "result",
+          "title": "Évaporation normale",
+          "severity": "diy",
+          "causes": ["Chaleur, vent et soleil : jusqu'à 0,5 à 1 cm par jour en été", "Éclaboussures et lavages de filtre"],
+          "steps": [
+            "Faites des appoints d'eau réguliers pour garder le niveau au milieu des skimmers.",
+            "Couvrez la piscine la nuit (bâche à bulles, volet) pour réduire l'évaporation.",
+            "Refaites une analyse après chaque gros appoint."
+          ],
+          "products": [],
+          "showPro": false
+        },
+        "r-piece": {
+          "type": "result",
+          "title": "Fuite au niveau d'une pièce à sceller",
+          "severity": "diy",
+          "causes": ["Joint de skimmer, de buse ou de projecteur défaillant", "Brides mal serrées"],
+          "steps": [
+            "Coupez la filtration et laissez l'eau s'immobiliser.",
+            "Déposez quelques gouttes de colorant de détection près de la pièce : s'il est aspiré, la fuite est là.",
+            "Un joint de skimmer ou de buse peut parfois être refait avec un kit adapté.",
+            "Si la fuite est au niveau du projecteur, ne touchez pas au projecteur : coupez son alimentation et faites intervenir un professionnel."
+          ],
+          "products": ["colorant-fuite", "kit-reparation-liner"],
+          "showPro": true
+        },
+        "r-refoulement": {
+          "type": "result",
+          "title": "Fuite probable sur le circuit de refoulement",
+          "severity": "pro",
+          "causes": ["Canalisation fissurée ou raccord défaillant côté refoulement (sous pression)"],
+          "steps": [
+            "Inspectez le local technique : raccords, vanne, filtre, joint de couvercle.",
+            "Vérifiez s'il y a des zones humides anormales dans le jardin, entre le local et le bassin.",
+            "Une recherche de fuite professionnelle (mise en pression des canalisations) localise précisément le défaut."
+          ],
+          "products": [],
+          "showPro": true
+        },
+        "r-aspiration": {
+          "type": "result",
+          "title": "Fuite probable sur le circuit d'aspiration",
+          "severity": "pro",
+          "causes": ["Canalisation d'aspiration fissurée", "Fuite sur la bonde de fond ou le skimmer"],
+          "steps": [
+            "Surveillez la présence de bulles d'air au refoulement et dans le préfiltre quand la pompe tourne.",
+            "Vérifiez les raccords côté aspiration dans le local technique.",
+            "Faites appel à un professionnel pour une recherche de fuite."
+          ],
+          "products": [],
+          "showPro": true
+        },
+        "r-structure": {
+          "type": "result",
+          "title": "Fuite dans le revêtement ou la structure",
+          "severity": "pro",
+          "causes": ["Liner percé ou décollé", "Fissure dans la structure ou la coque"],
+          "steps": [
+            "Inspectez le liner (masque de plongée) : trous, plis, zones décollées.",
+            "Un petit trou dans le liner se répare avec un kit subaquatique.",
+            "Pour une fissure ou une fuite introuvable, faites intervenir un spécialiste de la recherche de fuite."
+          ],
+          "products": ["kit-reparation-liner", "colorant-fuite"],
+          "showPro": true
+        }
+      },
+      "faq": [
+        {
+          "q": "Quelle perte d'eau est normale pour une piscine ?",
+          "a": "En été, l'évaporation fait généralement perdre 0,5 à 1 cm par jour, parfois plus en cas de vent ou de canicule."
+        },
+        {
+          "q": "Mon assurance couvre-t-elle une fuite de piscine ?",
+          "a": "Cela dépend de votre contrat habitation. Renseignez-vous avant de lancer une recherche de fuite, certaines assurances la prennent en charge."
+        }
+      ]
+    },
+    {
+      "slug": "pression-filtre-haute",
+      "title": "Pression du filtre trop haute",
+      "question": "Pourquoi la pression de mon filtre de piscine est-elle trop haute ?",
+      "shortDescription": "Filtre encrassé, sable colmaté ou refoulement obstrué.",
+      "icon": "gauge",
+      "metaDescription": "Pression du filtre à sable trop haute : quand faire un contre-lavage, comment dégraisser le sable et quand le remplacer.",
+      "relatedArticle": "heures-filtration-piscine",
+      "proNeed": "filtration",
+      "startNode": "ecart",
+      "nodes": {
+        "ecart": {
+          "type": "question",
+          "text": "La pression dépasse-t-elle d'environ 0,5 bar celle relevée juste après un lavage ?",
+          "help": "Notez la pression de référence juste après chaque lavage.",
+          "options": [
+            { "label": "Oui", "next": "lavage" },
+            { "label": "Non", "next": "r-normal" }
+          ]
+        },
+        "lavage": {
+          "type": "question",
+          "text": "Un lavage à contre-courant fait-il redescendre la pression à sa valeur habituelle ?",
+          "options": [
+            { "label": "Oui", "next": "r-lavage" },
+            { "label": "Non, elle reste haute", "next": "refoulement" }
+          ]
+        },
+        "refoulement": {
+          "type": "question",
+          "text": "Les vannes de refoulement sont-elles complètement ouvertes et les buses dégagées ?",
+          "options": [
+            { "label": "Oui", "next": "r-sable" },
+            { "label": "Non ou je ne sais pas", "next": "r-refoulement" }
+          ]
+        },
+        "r-normal": {
+          "type": "result",
+          "title": "Pression normale",
+          "severity": "diy",
+          "causes": ["Chaque installation a sa pression de fonctionnement (souvent 0,5 à 1 bar)"],
+          "steps": [
+            "Notez la pression juste après chaque lavage : c'est votre référence.",
+            "Lavez le filtre quand la pression augmente de 0,5 bar par rapport à cette référence.",
+            "Remplacez le manomètre s'il reste bloqué ou affiche une valeur incohérente."
+          ],
+          "products": ["manometre"],
+          "showPro": false
+        },
+        "r-lavage": {
+          "type": "result",
+          "title": "Filtre simplement encrassé",
+          "severity": "diy",
+          "causes": ["Accumulation normale d'impuretés dans le sable ou la cartouche"],
+          "steps": [
+            "Pompe arrêtée, mettez la vanne sur « lavage » puis redémarrez 2 à 3 minutes, jusqu'à ce que l'eau du voyant soit claire.",
+            "Pompe arrêtée, passez sur « rinçage » 30 secondes à 1 minute.",
+            "Pompe arrêtée, revenez sur « filtration » puis redémarrez.",
+            "Ne changez jamais la position de la vanne pompe en marche."
+          ],
+          "products": ["manometre"],
+          "showPro": false
+        },
+        "r-sable": {
+          "type": "result",
+          "title": "Sable colmaté ou usé",
+          "severity": "diy",
+          "causes": ["Graisses et calcaire qui agglomèrent le sable", "Sable de plus de 5 à 7 ans"],
+          "steps": [
+            "Faites un traitement dégraissant / détartrant du filtre en suivant l'étiquette.",
+            "Si la pression reste haute, remplacez le sable (ou passez au verre filtrant).",
+            "Profitez-en pour vérifier l'état des crépines au fond du filtre.",
+            "Un pisciniste peut s'en charger si vous préférez."
+          ],
+          "products": ["nettoyant-filtre", "verre-filtrant"],
+          "showPro": true
+        },
+        "r-refoulement": {
+          "type": "result",
+          "title": "Refoulement obstrué",
+          "severity": "diy",
+          "causes": ["Vanne partiellement fermée", "Buses obstruées", "Équipement en aval colmaté (réchauffeur, électrolyseur)"],
+          "steps": [
+            "Pompe arrêtée, vérifiez que toutes les vannes côté refoulement sont ouvertes.",
+            "Nettoyez les buses de refoulement.",
+            "Vérifiez la cellule de l'électrolyseur ou l'échangeur s'il y en a un.",
+            "Si le problème persiste, faites appel à un pisciniste."
+          ],
+          "products": ["nettoyant-cellule"],
+          "showPro": true
+        }
+      },
+      "faq": [
+        {
+          "q": "À quelle pression faut-il laver un filtre à sable ?",
+          "a": "Quand la pression augmente d'environ 0,5 bar par rapport à la pression mesurée juste après le dernier lavage."
+        },
+        {
+          "q": "Tous les combien changer le sable du filtre ?",
+          "a": "En moyenne tous les 5 à 7 ans. Le verre filtrant dure plus longtemps et filtre plus finement."
+        }
+      ]
+    },
+    {
+      "slug": "electrolyseur-ne-produit-plus",
+      "title": "Électrolyseur qui ne produit plus",
+      "question": "Pourquoi mon électrolyseur au sel ne produit-il plus de chlore ?",
+      "shortDescription": "Sel, température, tartre sur la cellule ou débit insuffisant.",
+      "icon": "battery",
+      "metaDescription": "Électrolyseur au sel qui ne produit plus de chlore : taux de sel, eau froide, cellule entartrée, alarme débit. Diagnostic et solutions.",
+      "relatedArticle": "electrolyseur-sel-piscine",
+      "proNeed": "electrolyseur",
+      "startNode": "alarme",
+      "nodes": {
+        "alarme": {
+          "type": "question",
+          "text": "L'appareil affiche-t-il une alarme ?",
+          "options": [
+            { "label": "Alarme sel (« low salt », « sel bas »)", "next": "sel" },
+            { "label": "Alarme débit (« flow », « no flow »)", "next": "r-debit" },
+            { "label": "Aucune alarme", "next": "froid" },
+            { "label": "L'écran est éteint", "next": "r-electricien" }
+          ]
+        },
+        "sel": {
+          "type": "question",
+          "text": "Le taux de sel mesuré avec un testeur est-il inférieur à la valeur conseillée par le fabricant ?",
+          "options": [
+            { "label": "Oui", "next": "r-ajouter-sel" },
+            { "label": "Non, il est correct", "next": "r-cellule" }
+          ]
+        },
+        "froid": {
+          "type": "question",
+          "text": "L'eau est-elle à moins de 15 °C ?",
+          "options": [
+            { "label": "Oui", "next": "r-eau-froide" },
+            { "label": "Non", "next": "tartre" }
+          ]
+        },
+        "tartre": {
+          "type": "question",
+          "text": "Voyez-vous du tartre blanc entre les plaques de la cellule ?",
+          "help": "Beaucoup de cellules ont un corps transparent. Sinon, consultez la notice pour la démonter (appareil hors tension).",
+          "options": [
+            { "label": "Oui", "next": "r-cellule" },
+            { "label": "Non", "next": "r-reglages" }
+          ]
+        },
+        "r-ajouter-sel": {
+          "type": "result",
+          "title": "Taux de sel insuffisant",
+          "severity": "diy",
+          "causes": ["Dilution par la pluie, les lavages de filtre ou les appoints d'eau"],
+          "steps": [
+            "Calculez la quantité : (taux conseillé − taux mesuré) en g/L × volume en m³ = kg de sel. Exemple : 50 m³ de 3 à 4 g/L = 50 kg.",
+            "Arrêtez l'électrolyseur (laissez la filtration tourner).",
+            "Répartissez le sel dans le bassin, côté profond, jamais dans le skimmer.",
+            "Filtrez 24 h pour dissoudre le sel, puis remettez l'électrolyseur en marche.",
+            "Recontrôlez le taux de sel le lendemain."
+          ],
+          "products": ["sel-piscine", "testeur-sel"],
+          "showPro": false
+        },
+        "r-debit": {
+          "type": "result",
+          "title": "Débit insuffisant détecté",
+          "severity": "diy",
+          "causes": ["Filtre encrassé", "Panier de préfiltre bouché", "Vanne fermée", "Détecteur de débit défaillant"],
+          "steps": [
+            "Nettoyez les paniers de skimmer et de préfiltre (pompe à l'arrêt).",
+            "Lavez le filtre si la pression est élevée.",
+            "Vérifiez que les vannes sont ouvertes.",
+            "Si l'alarme persiste avec un bon débit, faites vérifier le détecteur par un professionnel."
+          ],
+          "products": ["manometre"],
+          "showPro": true
+        },
+        "r-eau-froide": {
+          "type": "result",
+          "title": "Eau trop froide",
+          "severity": "diy",
+          "causes": ["Sous 15 °C environ, la production baisse fortement et les cellules s'usent vite"],
+          "steps": [
+            "C'est normal : la plupart des électrolyseurs se mettent en veille par eau froide.",
+            "Pour désinfecter, utilisez ponctuellement du chlore (galets ou choc) jusqu'au réchauffement de l'eau.",
+            "En hiver, arrêtez l'électrolyseur selon les consignes du fabricant."
+          ],
+          "products": ["chlore-lent", "chlore-choc"],
+          "showPro": false
+        },
+        "r-cellule": {
+          "type": "result",
+          "title": "Cellule entartrée ou usée",
+          "severity": "diy",
+          "causes": ["Tartre sur les plaques (eau dure, pH haut)", "Cellule en fin de vie (souvent 8 000 à 10 000 heures)"],
+          "steps": [
+            "Coupez l'électrolyseur et la pompe avant toute manipulation.",
+            "Démontez la cellule selon la notice et faites-la tremper dans un nettoyant pour cellule (jamais d'objet métallique pour gratter).",
+            "Rincez, remontez et vérifiez la production.",
+            "Si la production reste faible avec une cellule propre et un sel correct, la cellule est probablement usée : faites-la tester par un professionnel."
+          ],
+          "products": ["nettoyant-cellule", "testeur-sel"],
+          "showPro": true
+        },
+        "r-reglages": {
+          "type": "result",
+          "title": "Réglages ou équilibre de l'eau",
+          "severity": "diy",
+          "causes": ["Production réglée trop bas", "Filtration trop courte", "Stabilisant absent ou trop élevé", "pH trop haut (chlore moins actif)"],
+          "steps": [
+            "Augmentez le pourcentage de production ou la durée de filtration.",
+            "Vérifiez le pH (idéal 7,2) et le stabilisant (20 à 50 mg/L) avec notre outil d'analyse.",
+            "Si le chlore reste introuvable malgré tout, faites appel à un professionnel."
+          ],
+          "products": ["trousse-analyse", "stabilisant"],
+          "showPro": true
+        },
+        "r-electricien": {
+          "type": "result",
+          "title": "Alimentation électrique : électricien requis",
+          "severity": "electricien",
+          "causes": ["Protection déclenchée", "Alimentation défectueuse", "Carte électronique en panne"],
+          "steps": [
+            "Vérifiez uniquement la position des protections dans le tableau de la maison.",
+            "N'ouvrez ni le boîtier de l'électrolyseur ni le coffret de filtration.",
+            "Faites intervenir un électricien ou le service après-vente du fabricant."
+          ],
+          "products": [],
+          "showPro": true
+        }
+      },
+      "faq": [
+        {
+          "q": "Quel taux de sel pour un électrolyseur ?",
+          "a": "Généralement 3 à 5 g/L, mais la valeur dépend du modèle : suivez toujours la notice du fabricant."
+        },
+        {
+          "q": "Faut-il du stabilisant avec un électrolyseur ?",
+          "a": "Oui, un taux de 20 à 50 mg/L protège le chlore produit des UV. Au-delà de 75 mg/L, un renouvellement partiel de l'eau est conseillé."
+        }
+      ]
+    }
+  ]
+}
