@@ -41,12 +41,12 @@ export function ProductRecommendation({ productKey, compact = false }: { product
 }
 
 /** Liste de produits conseillés */
-export function ProductList({ keys }: { keys: readonly string[] }) {
+export function ProductList({ keys, compact = false }: { keys: readonly string[]; compact?: boolean }) {
   if (keys.length === 0) return null;
   return (
     <div className="space-y-3">
       {keys.map((k) => (
-        <ProductRecommendation key={k} productKey={k} />
+        <ProductRecommendation key={k} productKey={k} compact={compact} />
       ))}
     </div>
   );

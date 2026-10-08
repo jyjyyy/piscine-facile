@@ -29,3 +29,14 @@ describe("arbre de dépannage (data/troubleshooting.json)", () => {
     );
   });
 });
+
+import { readFileSync } from "node:fs";
+
+describe("calendrier d'entretien", () => {
+  it("toutes les clés produits du calendrier existent dans config/affiliates.ts", () => {
+    const src = readFileSync("app/calendrier-entretien/page.tsx", "utf8");
+    const keys = [...src.matchAll(/(?:essentials|options): \[([^\]]*)\]/g)].flatMap((m) => [...m[1].matchAll(/"([^"]+)"/g)].map((x) => x[1]));
+    expect(keys.length).toBeGreaterThan(10);
+    expect(keys.filter((k) => !getAffiliate(k))).toEqual([]);
+  });
+});

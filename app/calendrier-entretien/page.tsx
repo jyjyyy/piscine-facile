@@ -3,7 +3,7 @@ import { buildMetadata } from "@/lib/seo";
 import { siteConfig } from "@/config/site";
 import { PageHeader } from "@/components/PageHeader";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
-import { ProductList } from "@/components/ProductRecommendation";
+import { SeasonProducts } from "@/components/SeasonProducts";
 import { AffiliateDisclosure } from "@/components/AffiliateDisclosure";
 import { RelatedLinks } from "@/components/RelatedLinks";
 import { JsonLd } from "@/components/JsonLd";
@@ -24,7 +24,12 @@ interface Season {
   color: string;
   intro: string;
   groups: Array<{ title: string; tasks: string[] }>;
-  products: string[];
+  /** Produits indispensables pour cette étape (3 à 4 maximum, clés de config/affiliates.ts) */
+  essentials: string[];
+  /** Produits facultatifs (affichés repliés), pour plus de confort */
+  options: string[];
+  /** Conseil pour choisir les quantités ou les tailles */
+  sizingTip?: string;
 }
 
 const seasons: Season[] = [
@@ -57,7 +62,10 @@ const seasons: Season[] = [
         ],
       },
     ],
-    products: ["trousse-analyse", "chlore-choc", "nettoyant-ligne-eau"],
+    essentials: ["pack-remise-en-route", "trousse-analyse", "nettoyant-ligne-eau", "nettoyant-filtre"],
+    options: ["anti-algues", "floculant", "aspirateur-manuel", "thermometre", "bache-bulles"],
+    sizingTip:
+      "Le pack contient déjà le chlore, le pH plus / moins et le TAC plus : inutile de les acheter séparément. Avec un électrolyseur ou du brome, prenez plutôt les produits à l'unité.",
   },
   {
     id: "ete",
@@ -101,7 +109,8 @@ const seasons: Season[] = [
         ],
       },
     ],
-    products: ["bandelettes", "chlore-lent", "robot"],
+    essentials: ["bandelettes", "chlore-lent", "epuisette"],
+    options: ["robot-milieu", "bache-bulles", "regulateur-ph"],
   },
   {
     id: "hivernage-actif",
@@ -129,7 +138,8 @@ const seasons: Season[] = [
         ],
       },
     ],
-    products: ["produit-hivernage", "bache-hivernage"],
+    essentials: ["produit-hivernage", "chlore-choc", "bache-hivernage"],
+    options: ["hors-gel-coffret", "pompe-vide-bache"],
   },
   {
     id: "hivernage-passif",
@@ -159,7 +169,10 @@ const seasons: Season[] = [
         ],
       },
     ],
-    products: ["produit-hivernage", "flotteurs-hivernage", "bache-hivernage"],
+    essentials: ["pack-hivernage", "produit-hivernage", "bache-hivernage"],
+    options: ["pompe-vide-bache", "filet-feuilles", "enrouleur-bache"],
+    sizingTip:
+      "Quantités : un gizzmo par skimmer, un bouchon par buse et par prise balai, un flotteur tous les 50 cm environ sur la diagonale du bassin (≈ 18 pour un 8 × 4 m).",
   },
 ];
 
@@ -220,7 +233,7 @@ export default function CalendrierPage() {
                 </div>
               ))}
             </div>
-            <ProductList keys={s.products} />
+            <SeasonProducts essentials={s.essentials} options={s.options} note={s.sizingTip} />
           </section>
         ))}
 
